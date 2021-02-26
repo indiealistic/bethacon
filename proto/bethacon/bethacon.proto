@@ -4,7 +4,7 @@ option go_package = "github.com/indiealistic/bethacon/proto/bethacon;bethaconpro
 
 package grpcapiproto;
 
-import "eth/v1alpha1/attestation.proto";
+import "github.com/prysmaticlabs/ethereumapis/eth/v1alpha1/attestation.proto";
 import "google/protobuf/empty.proto";
 import "github.com/indiealistic/bethacon/proto/health/health.proto";
 import "github.com/indiealistic/bethacon/proto/status/status.proto";
