@@ -7,10 +7,10 @@
 package bethaconproto
 
 import (
-	health "github.com/indiealistic/bethacon/proto/health"
-	status "github.com/indiealistic/bethacon/proto/status"
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
+	health "github.com/indiealistic/bethacon/proto/health"
+	status "github.com/indiealistic/bethacon/proto/status"
 	v1alpha1 "github.com/prysmaticlabs/ethereumapis/eth/v1alpha1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"

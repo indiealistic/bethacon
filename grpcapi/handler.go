@@ -12,36 +12,35 @@ import (
 )
 
 // To make sure Handler implements grpcapiproto.BethaConServiceHandler interface.
-var _ grpcapiproto.BethaConServiceHandler = &handler{}
+var _ grpcapiproto.BethaConServiceServer = &handler{}
 
 // Options serves as the dependency injection container to create a new handler.
 type Options struct {
 	BeaconChainClient beaconchain.BeaconChain
-	SelfPingClient    *health.SelfPingClient
 	Log               *zap.Logger
 }
 
 // handler implements grpcapiproto.BethaConServiceHandler interface
 type handler struct {
+	grpcapiproto.UnimplementedBethaConServiceServer
+
 	beaconChainClient beaconchain.BeaconChain
-	selfPingClient    *health.SelfPingClient
 	log               *zap.Logger
 }
 
 // New is the constructor of handler
-func New(opts Options) grpcapiproto.BethaConServiceHandler {
+func New(opts Options) grpcapiproto.BethaConServiceServer {
 	return &handler{
 		beaconChainClient: opts.BeaconChainClient,
-		selfPingClient:    opts.SelfPingClient,
 		log:               opts.Log,
 	}
 }
 
-func (h *handler) Health(context.Context, *empty.Empty, *health.HealthResponse) error {
+func (h *handler) Health(context.Context, *empty.Empty) (*health.HealthResponse, error) {
 	// TODO: Implement healthcheck
-	return nil
+	return &health.HealthResponse{}, nil
 }
 
-func (h *handler) Ping(context.Context, *empty.Empty, *empty.Empty) error {
-	return nil
+func (h *handler) Ping(context.Context, *empty.Empty) (*empty.Empty, error) {
+	return &empty.Empty{}, nil
 }
