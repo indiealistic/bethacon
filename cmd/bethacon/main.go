@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	serviceName = "Bethacon"
+	serviceName = "BethaCon"
 )
 
 // Version may be changed during build via --ldflags parameter

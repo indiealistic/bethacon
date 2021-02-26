@@ -11,8 +11,8 @@ import (
 	"github.com/indiealistic/bethacon/proto/health"
 )
 
-// To make sure Handler implements grpcapiproto.BethaconServiceHandler interface.
-var _ grpcapiproto.BethaconServiceHandler = &handler{}
+// To make sure Handler implements grpcapiproto.BethaConServiceHandler interface.
+var _ grpcapiproto.BethaConServiceHandler = &handler{}
 
 // Options serves as the dependency injection container to create a new handler.
 type Options struct {
@@ -21,7 +21,7 @@ type Options struct {
 	Log               *zap.Logger
 }
 
-// handler implements grpcapiproto.BethaconServiceHandler interface
+// handler implements grpcapiproto.BethaConServiceHandler interface
 type handler struct {
 	beaconChainClient beaconchain.BeaconChain
 	selfPingClient    *health.SelfPingClient
@@ -29,7 +29,7 @@ type handler struct {
 }
 
 // New is the constructor of handler
-func New(opts Options) grpcapiproto.BethaconServiceHandler {
+func New(opts Options) grpcapiproto.BethaConServiceHandler {
 	return &handler{
 		beaconChainClient: opts.BeaconChainClient,
 		selfPingClient:    opts.SelfPingClient,

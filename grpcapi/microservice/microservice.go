@@ -21,7 +21,7 @@ import (
 // MicroService is the micro-service.
 type MicroService struct {
 	svc     micro.Service
-	handler bethaconproto.BethaconServiceHandler
+	handler bethaconproto.BethaConServiceHandler
 }
 
 // Init initializes the service.
@@ -58,7 +58,7 @@ func Init(clientOpts *ClientOptions) (*MicroService, error) {
 // New is the constructor of the service.
 func New(svc micro.Service, clientOpts *ClientOptions) (*MicroService, error) {
 	// Create a self-pinger client.
-	selfPingClient := health.NewSelfPingClient(svc, bethaconproto.NewBethaconService(clientOpts.Name, svc.Client()))
+	selfPingClient := health.NewSelfPingClient(svc, bethaconproto.NewBethaConService(clientOpts.Name, svc.Client()))
 
 	var clients []beaconchain.BeaconChain
 
@@ -95,7 +95,7 @@ func New(svc micro.Service, clientOpts *ClientOptions) (*MicroService, error) {
 	})
 
 	// Register the service.
-	if err := bethaconproto.RegisterBethaconServiceHandler(svc.Server(), handler); err != nil {
+	if err := bethaconproto.RegisterBethaConServiceHandler(svc.Server(), handler); err != nil {
 		return nil, errors.Wrap(err, "failed to register RPC handler")
 	}
 

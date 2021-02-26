@@ -17,6 +17,3 @@
 # Other
 .env
 .idea
-*.generated.go
-*.pb.go
-*.micro.go
